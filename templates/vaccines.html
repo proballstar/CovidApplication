@@ -1,0 +1,26 @@
+<!-- senoe: Andre -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row row-eq-spacing-lg">
+      <div class="col-xl-9">
+        <div class="content">
+          <div class="row">
+            <h1 class="card-title m-0">Vaccine Location Search</h1>
+          </div>
+          <hr />
+        </div>
+        <div class="card">
+          {% if request.method == "GET" %}
+          <h2 class="card-title">get request</h2>
+          {% elif request.method == "POST" %}
+          <h2 class="card-title">post request</h2>
+          <code>{{availability}}</code>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

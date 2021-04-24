@@ -1,0 +1,42 @@
+<!-- senoe: Andre -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row row-eq-spacing-lg">
+      <div class="col-xl-9">
+        <div class="content">
+          <div class="row">
+            <h1 class="card-title m-0">Vaccine Location Search</h1>
+          </div>
+          <hr />
+        </div>
+        <div class="card">
+          <h2 class="card-title">Search by city</h2>
+          
+          <form method="POST" action="vaccines">
+            <div class="input-group">
+              <input type="text" class="form-control" name="city" placeholder="Enter a city">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="col-xl-3">
+        <div class="content">
+          <h1 class="card-title m-0">Announcements</h1>
+          <hr />
+          <div class="fake-content"></div>
+          <div class="fake-content"></div>
+          <div class="fake-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+App:
+
+Priority:
+- Info on vaccine locations
+- Plan a trip to somewhere, then it gives you COVID restrictions
+- Helping kids who are not learning as well during COVID
+  - School Application => (MASD)
+
+If we have time:
+* PPE
+* Machine learning (School Applications)
+
+
+APIs:
+
+Vaccine information:
+- CVS: https://www.cvs.com/immunizations/covid-19-vaccine.vaccine-status.json?vaccineinfo
+- Rite Aid: https://www.riteaid.com/services/ext/v2/vaccine/checkSlots?storeNumber=05944 (requires pharmacy store number)
+- math problems: https://studycounts.com/api
+
+Travel Restrictions:
