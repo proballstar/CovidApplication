@@ -1,5 +1,5 @@
 ## Inspiration
-
+After a year of online school, we felt like we did not learn a lot, so we created this app to help others learn.
 
 ## What it does
 It provides practice problems on math subjects such as arithmetic, factoring, and algebra to the children who need them. It also finds vaccine locations near your location to help parents find out when they can send their children back to school again.
