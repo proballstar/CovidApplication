@@ -2,8 +2,13 @@
 
 var data = null;
 
+function c(arg) {
+  console.log(arg)
+}
+
 $(document).ready(async function() {
   data = (await fetchData()).data;
+  c('in doucument ready' + data)
 });
 
 $("#search").click(async function() {
@@ -24,20 +29,30 @@ async function search(city, state) {
 }
 
 async function fetchData() {
-  return await axios.get('https://www.vaccinespotter.org/api/v0/states/CA.json')
+  //return await axios.get('https://www.vaccinespotter.org/api/v0/states/CA.json')
+  return await axios.get('https://senoe.wtf/a/fakedata.json')
 }
 
 async function getProviders(city, state) {
-    console.log(`${city}, ${state}`)
+  console.log(`${city}, ${state}`)
 
   let _features = window.data.features
   var _providers = []
   for(let i = 0; i < _features.length; i++) {
     if(_features[i].properties.name.toUpperCase() == city.toUpperCase() && _features[i].properties.state.toUpperCase() == state.toUpperCase() && _features[i].properties.appointments_available) {
       _providers.push(_features[i])
-      console.log("a")
+
+      /*c('city' + city)
+      c('state'+ state)
+      c('appointments' + _features[i].properties.appointments_available)
+
+      console.log("a")*/
     }
   }
+  /*
+  c('in getProviders')
+  c('features' + _features)
+  c('_providers'+ _providers)*/
 
   console.log(_providers)
 
@@ -66,7 +81,7 @@ async function displayData(_provider) {
 
       _html += `
       <p>
-      Time: ${date}
+      Time: ${time}
       <br>
       Dose: ${_prop.appointments[i].type}
       </p>
@@ -84,7 +99,7 @@ async function displayData(_provider) {
   }
 
   if(_data.length == 0) {
-    _html = "<p>Sorry, no vaccines are availiable</p>"
+    _html = "<p>Sorry, no vaccines are available</p>"
   }
 
   $("#data").html(_html);

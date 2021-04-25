@@ -1,0 +1,5 @@
+{
+    "diffToMax": [2, 3, 4, 6, 8, 10], 
+    "diffToNumPar": [0, 2, 2, 2, 3, 4], 
+    "neededToPass": [5, 12, 22, 37, 62, -1] 
+}
