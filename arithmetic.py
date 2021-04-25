@@ -50,7 +50,7 @@ def _evalRec(exp):
 # maxInParentheses = maximum numbers in parentheses
 
 
-def getExpr(maxNumNums, numInParentheses):
+def getExpr(maxNumNums, numInParentheses, difficulty):
     if maxNumNums < 2:
         raise TypeError(
             "The maximum number of numbers has to be an integer greater than or equal to 2")
@@ -134,65 +134,65 @@ def getExpr(maxNumNums, numInParentheses):
     return eq
 
 
-# for testing
-if __name__ == '__main__':
-    # maps difficulty to maximum # of numbers
-    diffToMax = [2, 3, 4, 6, 8, 10]
-    # maps difficulty to # of numbers in parenthesis
-    diffToNumPar = [0, 2, 2, 2, 3, 4]
-    # number of correct answers needed to move on to next difficulty
-    neededToPass = [5, 12, 22, 37, 62, -1]
-    difficulty = 0  # increases as it gets harder, largest = 5
+# # for testing
+# if __name__ == '__main__':
+#     # maps difficulty to maximum # of numbers
+#     diffToMax = [2, 3, 4, 6, 8, 10]
+#     # maps difficulty to # of numbers in parenthesis
+#     diffToNumPar = [0, 2, 2, 2, 3, 4]
+#     # number of correct answers needed to move on to next difficulty
+#     neededToPass = [5, 12, 22, 37, 62, -1]
+#     difficulty = 0  # increases as it gets harder, largest = 5
 
-    print("evaluate given expressions")
-    print("round to 2 digits if needed")
-    print("type \"exit\" to exit")
+#     print("evaluate given expressions")
+#     print("round to 2 digits if needed")
+#     print("type \"exit\" to exit")
 
-    while True:
-        # get max number of numbers from difficulty
-        maxx = diffToMax[difficulty]
+#     while True:
+#         # get max number of numbers from difficulty
+#         maxx = diffToMax[difficulty]
 
-        # get expression and evaluate it
-        expr = getExpr(maxx, diffToNumPar[difficulty])
-        ans = evaluate(expr)
+#         # get expression and evaluate it
+#         expr = getExpr(maxx, diffToNumPar[difficulty], difficulty)
+#         ans = evaluate(expr)
 
-        # keep on generating new equations until there is no division by 0 (low chance, won't affect performance much)
-        while (ans is None):
-            # print("divided by 0")
-            expr = getExpr(maxx, diffToNumPar[difficulty])
-            ans = evaluate(expr)
+#         # keep on generating new equations until there is no division by 0 (low chance, won't affect performance much)
+#         while (ans is None):
+#             # print("divided by 0")
+#             expr = getExpr(maxx, diffToNumPar[difficulty], difficulty)
+#             ans = evaluate(expr)
 
-        ans = float(round(ans, 2))
-        choices = genRandom(ans)
+#         ans = float(round(ans, 2))
+#         choices = genRandom(ans)
 
-        print(f"current difficulty: {difficulty}", end=". ")
-        userans = input(f"Evaluate this: {expr} \n out of {choices}\n")
+#         print(f"current difficulty: {difficulty}", end=". ")
+#         userans = input(f"Evaluate this: {expr} \n out of {choices}\n")
 
-        if userans.lower() == 'exit':
-            print(f"Number of correct answers: {correctAnswers}")
-            print(f"Number of wrong answer: {wrongAnswers}")
-            print(f"Total answered: {correctAnswers+wrongAnswers}")
-            print("Finished succesfully!")
-            break
+#         if userans.lower() == 'exit':
+#             print(f"Number of correct answers: {correctAnswers}")
+#             print(f"Number of wrong answer: {wrongAnswers}")
+#             print(f"Total answered: {correctAnswers+wrongAnswers}")
+#             print("Finished succesfully!")
+#             break
 
-        # convert everything to str to make comparing easier
-        userans = str(float(userans))
-        wasInt = float(ans).is_integer()
-        ans = str(ans)
+#         # convert everything to str to make comparing easier
+#         userans = str(float(userans))
+#         wasInt = float(ans).is_integer()
+#         ans = str(ans)
 
-        if userans == ans or (not float(ans).is_integer() and ans[1:] == userans):
-            correctAnswers += 1
-            print("Correct!")
-        else:
-            wrongAnswers += 1
-            if (wasInt):
-                print(f"Wrong. The answer was {floor(float(ans))}")
-            else:
-                print(f"Wrong. The answer was {ans}")
+#         if userans == ans or (not float(ans).is_integer() and ans[1:] == userans):
+#             correctAnswers += 1
+#             print("Correct!")
+#         else:
+#             wrongAnswers += 1
+#             if (wasInt):
+#                 print(f"Wrong. The answer was {floor(float(ans))}")
+#             else:
+#                 print(f"Wrong. The answer was {ans}")
 
-        # increment difficulty if correct answers achieved
-        if (correctAnswers >= neededToPass[difficulty]):
-            difficulty += 1
+#         # increment difficulty if correct answers achieved
+#         if (correctAnswers >= neededToPass[difficulty]):
+#             difficulty += 1
 
-        if (difficulty >= 6):
-            difficulty = 6
+#         if (difficulty >= 6):
+#             difficulty = 6

@@ -1,22 +1,8 @@
 from flask import Flask, render_template
-#from vaccines import vaccines
 from math_help import math_help
 
 app = Flask(__name__, static_url_path='/static')
-#app.register_blueprint(vaccines)
 app.register_blueprint(math_help)
-
-# @app.route("/school-help")
-# def school_help_route():
-#   return "hello world"
-
-# @app.route("/travel-information")
-# def travel_info_route():
-#   return "hello world"
-
-# @app.route("/school")
-# def school_route():
-#   pass
 
 # Home page
 @app.route("/")

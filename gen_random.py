@@ -2,7 +2,13 @@ from random import uniform, randint, choice
 from math import floor
 
 # generates all 4 choices
-def genRandom(ans):
+def genRandom(ans, **kwargs):
+    """
+    ans is the answer of the problem
+    sort= toggles sorting list at the end, default False
+    canzero = if the resulting number can equal 0 or not
+    """
+
     ans = float(ans)
 
     l = []
@@ -14,7 +20,11 @@ def genRandom(ans):
         # then picks random ones to add into the list
         select = list(range(ans-r, ans+r+1))
         select.pop(select.index(ans))
-        
+
+        print(f's {select}')
+        if (not kwargs.get('canzero') and 0 in select):
+          select.pop(select.index(0))
+
         # appends wrong answers to the array
         for i in range(0, 3):
             c = choice(select)
@@ -24,16 +34,16 @@ def genRandom(ans):
         l.append(ans)
 
         # sorts the list and returns the list of choices
-        l.sort()
+        if (not kwargs.get('sort')):
+            pass
+        else:
+            l.sort()
         return l
     else:
         for i in range(0, 3):
             # choose if random answer is going to be greater or less
             g = choice([True, False])
 
-            # I seperate so I do not have to search if value in list
-            # but I still have to search anyway so this is kind of useless
-            # I'm too lazy to remove it
             if g:
                 num = round(uniform(ans+0.25, ans+r), 2)
                 while True:
@@ -53,7 +63,10 @@ def genRandom(ans):
             l.append(num)
 
         l.append(ans)
-        l.sort()
+        if (not kwargs.get('sort')):
+            pass
+        else:
+            l.sort()
         return l
 
 # get the range of answers given the answer
@@ -74,27 +87,4 @@ def _getRange(ans):
         return floor(r)
     else:
         return round(r, 2)
-
-if __name__ == '__main__': 
-    maxx = -100000000000
-    minn = 100000000000
-    err1 = 0 # missing index
-    err2 = 0 # duplicate index
-    test = 3
-
-    for i in range(0, 10000):
-        l = genRandom(test)
-        try:
-            ind = l.index(test)
-        except ValueError:
-            err1 += 1
-        
-        for i in range(1, 4):
-            if (l[i] == l[i-1]):
-                err2 += 1
-        
-        maxx = max(maxx, l[-1])
-        minn = min(minn, l[0])
-    
-    print (f"{maxx} {minn} {err1}")
 

@@ -6,7 +6,19 @@
       <div class="col-xl-9">
         <div class="content">
           <div class="row">
-            <h1 class="card-title m-0">Math Help</h1>
+            <div class="col-12 col-lg-6">
+              <h1 class="card-title m-0">Math Help</h1>
+            </div>
+            {% if math_type == "arithmetic" %}
+              <div class="col-6 d-none d-lg-block">
+                  <ul class="breadcrumb text-right m-0">
+                      <li class="breadcrumb-item">Difficulty: {{difficulty}}</li>
+                      <li class="breadcrumb-item">Correct: {{correctAnswers}}</li>
+                      <li class="breadcrumb-item">Incorrect: {{wrongAnswers}}</li>
+                      <li class="breadcrumb-item">Total: {{totalAnswers}}</li>
+                  </ul>
+              </div>
+            {% endif %}
           </div>
           <hr />
         </div>
@@ -19,6 +31,7 @@
             </div>
           {% endif %}
 
+          {% if request.method == "GET" %}
           <form method="POST" class="d-grid">
           <input type="hidden" name="id" value="{{problem.id}}">
           {% for option in problem.options %}
@@ -35,10 +48,9 @@
             </div>
           {% endfor %}
 
-          {% if request.method == "GET" %}
           <button class="btn btn-primary mt-10" type="submit">Submit</button>
-          {% endif %}
           </form>
+          {% endif %}
 
           {% if request.method == "POST" %}
           <a class="btn btn-primary mt-10" href="">Next</a>
