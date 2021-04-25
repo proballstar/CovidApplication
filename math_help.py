@@ -6,8 +6,10 @@ import json
 
 math_help = Blueprint('math_help', __name__)
 
+neededToPass = []
+diffToMax = []
+diffToNumPar = 0
 difficulty = 0
-neededToPass = 0
 correctAnswers = 0
 wrongAnswers = 0
 
@@ -96,7 +98,7 @@ def math_practice():
     global wrongAnswers
     global difficulty
     global neededToPass
-    
+
     user_answer = request.form.get('problem')
     problem_id = int(request.form.get('id'))
     
@@ -110,10 +112,19 @@ def math_practice():
       return "Invalid problem type specified"
 
     if str(selected_type[problem_id]['correct']) == str(user_answer):
+      correctAnswers += 1
       value = 'Correct!'
     else:
+      wrongAnswers += 1
       value = f'Sorry, you put {user_answer}, but the correct answer was actually {selected_type[problem_id]["correct"]}.'
     
+    # increment difficulty if correct answers achieved
+    if (correctAnswers >= neededToPass[difficulty]):
+        difficulty += 1
+
+    if (difficulty >= 6):
+        difficulty = 6
+
     return render_template(
       'math-practice.html',
       problem=selected_type[problem_id],

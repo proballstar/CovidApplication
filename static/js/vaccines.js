@@ -29,8 +29,8 @@ async function search(city, state) {
 }
 
 async function fetchData() {
-  //return await axios.get('https://www.vaccinespotter.org/api/v0/states/CA.json')
-  return await axios.get('https://senoe.wtf/a/fakedata.json')
+  return await axios.get('https://www.vaccinespotter.org/api/v0/states/CA.json')
+  //return await axios.get('https://senoe.wtf/a/fakedata.json')
 }
 
 async function getProviders(city, state) {
