@@ -1,0 +1,52 @@
+<!-- senoe: Andre -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row row-eq-spacing-lg">
+      <div class="col-xl-9">
+        <div class="content">
+          <div class="row">
+            <h1 class="card-title m-0">Math Help</h1>
+          </div>
+          <hr />
+        </div>
+        <div class="card">
+          <h4 class="fw-500">{{problem.name}}</h4>
+
+          {% if request.method == "POST" %}
+            <div class="alert alert-primary mb-10" role="alert">
+              <h4 class="alert-heading m-0">{{value}}</h4>
+            </div>
+          {% endif %}
+
+          <form method="POST" class="d-grid">
+          <input type="hidden" name="id" value="{{problem.id}}">
+          {% for option in problem.options %}
+            <div>
+              <!-- expanded so it's easier to read -->
+              <input
+                type="radio"
+                name="problem"
+                value="{{option}}"
+                id="{{problem.options.index(option)}}"
+                {{ "disabled" if request.method == "POST" }}
+              >
+              <label for="radio-{{problem.options.index(option)}}">{{option}}</label>
+            </div>
+          {% endfor %}
+
+          {% if request.method == "GET" %}
+          <button class="btn btn-primary mt-10" type="submit">Submit</button>
+          {% endif %}
+          </form>
+
+          {% if request.method == "POST" %}
+          <a class="btn btn-primary mt-10" href="">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

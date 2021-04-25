@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
 	 crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=4">
 </head>
 
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars">
@@ -54,16 +54,28 @@
 
         <!-- Sidebar start -->
         <div class="sidebar">
-            <div class="sidebar-menu">
-                <h5 class="sidebar-title">Vaccine Search</h5>
-                <div class="sidebar-divider"></div>
-                <a href="/" class="sidebar-link sidebar-link-with-icon">
-                    <span class="sidebar-icon">
-                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                    </span>
-                    Home
-                </a>
-            </div>
+          <div class="sidebar-menu">
+            <h5 class="sidebar-title">Main</h5>
+            <div class="sidebar-divider"></div>
+            <a href="../" class="sidebar-link sidebar-link-with-icon">
+                <span class="sidebar-icon">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </span>
+                Home
+            </a>
+            <a href="../vaccines" class="sidebar-link sidebar-link-with-icon">
+                <span class="sidebar-icon">
+                    <i class="fas fa-syringe" aria-hidden="true"></i>
+                </span>
+                Vaccine Search
+            </a>
+            <a href="../math-practice" class="sidebar-link sidebar-link-with-icon">
+                <span class="sidebar-icon">
+                    <i class="fas fa-calculator" aria-hidden="true"></i>
+                </span>
+                Math Practice
+            </a>
+          </div>
         </div>
         <!-- Sidebar end -->
 
@@ -75,6 +87,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Halfmoon/1.1.1/js/halfmoon.min.js" integrity="sha512-8fN/MQrHBCMmkx2t4QwGODGHwQf8VxCeNwNkJz0gjt5JrlUfJ5zNlMr9lrzhnl7DSN+5E16YmMHnfomnQmvSoA==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block footer %}{% endblock %}
 </body>
 </html>

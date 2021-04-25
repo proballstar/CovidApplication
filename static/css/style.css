@@ -1,30 +1,72 @@
 /* Main CSS file */
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 body.use-roboto-all {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 body.with-extra-letter-spacing-on-side-navs .sidebar *,
 body.with-extra-letter-spacing-on-side-navs .on-this-page-nav * {
-    letter-spacing: 0.3px;
+  letter-spacing: 0.3px;
 }
 
 .fake-content {
-    height: 1.4rem;
-    background-color: #ecf0f1;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    margin-bottom: 1rem;
-    border-radius: 0.2rem;
+  height: 1.4rem;
+  background-color: #ecf0f1;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
 }
 .dark-mode .fake-content {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.025);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.025);
 }
 .fake-content:after {
-    content: '\200b';
+  content: '\200b';
 }
 .fake-content:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.select-state {
+  display: block;
+  height: var(--input-height);
+  padding-left: var(--input-horizontal-padding);
+  padding-right: var(--input-horizontal-padding);
+  color: var(--lm-input-text-color);
+  background-color: var(--lm-input-bg-color);
+  border: var(--input-border-width) solid var(--lm-input-border-color);
+  border-radius: var(--input-border-radius);
+  -moz-box-shadow: var(--lm-input-box-shadow);
+  -webkit-box-shadow: var(--lm-input-box-shadow);
+  box-shadow: var(--lm-input-box-shadow);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.d-grid {
+  display: grid;
+}
+
+input[name="problem"] {
+  vertical-align: middle;
+}
+
+/* from bootstrap (https://getbootstrap.com/docs/4.4/utilities/stretched-link) */
+.stretched-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.fw-500 {
+  font-weight: 500;
 }

@@ -9,13 +9,34 @@ Priority:
 If we have time:
 * PPE
 * Machine learning (School Applications)
-
+* Find API for each pharma company
 
 APIs:
 
 Vaccine information:
 - CVS: https://www.cvs.com/immunizations/covid-19-vaccine.vaccine-status.json?vaccineinfo
 - Rite Aid: https://www.riteaid.com/services/ext/v2/vaccine/checkSlots?storeNumber=05944 (requires pharmacy store number)
+- vaccine spotter: https://www.vaccinespotter.org/api/ (in case)
 - math problems: https://studycounts.com/api
 
-Travel Restrictions:
+Math:
+- Different topics:
+- Arithmetic (add, subtract, multiply, divide)
+  - Increasing difficulty in levels
+  - Level 0 - Level 1: you need to answer 5 correct answers
+  - Level 1 - Level 2: you need to then answer 7 correct answers
+  - Level 2  - Level 3: 10
+  - L3 - L4: 15
+  - L4 - L5: 25
+
+  Level 0: Only addition, 2 numbers in expression
+  Level 1: Addition and subraction, at most 3 numbers in expression, there can be parenthesis
+  Level 2: Addition, subraction, multiplication, at most 4 numbers in expression, 2 numbers in parenthesis
+  Level 3: All 4 operators, at most 6 numbers in expression, 2 numbers in parenthesis
+  Level 4: All 4 operators, at most 8 numbers in expression, 3 numbers in parenthesis
+  Level 5: All 4 operators, at most 10 numbers in expression, 4 numbers in parenthesis 
+
+- Factoring/Distributing
+- Solving for one-variable linear equation 
+- systems of equations (if we have time)
+- Quadratics (if we have time)
