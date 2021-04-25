@@ -13,6 +13,8 @@ difficulty = 0
 correctAnswers = 0
 wrongAnswers = 0
 
+temp = {}
+
 basic_math_problems = [
   { "id": 0, "name": '1 + 1', "options": [1, 2, 3, 4], "correct": 2 },
 ]
@@ -26,20 +28,9 @@ solving_equations = [
 ]
 
 def renderArithIntoArr():
-  global neededToPass
+  global neededToPass, diffToMax, difficulty, diffToNumPar
 
   d = {"id": 0}
-  temp = {}
-  with open('arithmeticConfig.json', 'r') as f:
-    temp = json.load(f)
-
-  # maps difficulty to maximum # of numbers
-  diffToMax = d["diffToMax"]
-  # maps difficulty to # of numbers in parenthesis
-  diffToNumPar = d["diffToNumPar"]
-  # number of correct answers needed to move on to next difficulty
-  neededToPass = d["neededToPass"]
-  difficulty = 0  # increases as it gets harder, largest = 5
 
    # get max number of numbers from difficulty
   maxx = diffToMax[difficulty]
@@ -63,6 +54,21 @@ def renderArithIntoArr():
   d['options'] = choices
   d['correct'] = ans
 
+# gets data from arithmetic configuration JSON file
+def getData():
+  global neededToPass, diffToMax, difficulty, diffToNumPar, temp
+
+  with open('arithmeticConfig.json', 'r') as f:
+    temp = json.load(f)
+
+  # maps difficulty to maximum # of numbers
+  diffToMax = temp["diffToMax"]
+  # maps difficulty to # of numbers in parenthesis
+  diffToNumPar = temp["diffToNumPar"]
+  # number of correct answers needed to move on to next difficulty
+  neededToPass = d["neededToPass"]
+  difficulty = 0  # increases as it gets harder, largest = 5
+
 @math_help.route('/math-practice', methods=['GET', 'POST'])
 def math_practice():
   math_type = request.args.get('type')
@@ -71,6 +77,8 @@ def math_practice():
 
   if request.method == 'GET':
     if math_type == "arithmetic":
+      
+
       random_problem_index = len(basic_math_problems)
       if random_problem_index != 0:
         random_problem_index -= 1
@@ -94,10 +102,7 @@ def math_practice():
     return render_template('math-practice.html', problem=problem)
 
   if request.method == 'POST':
-    global correctAnswers
-    global wrongAnswers
-    global difficulty
-    global neededToPass
+    global correctAnswers, wrongAnswers, difficulty, neededToPass
 
     user_answer = request.form.get('problem')
     problem_id = int(request.form.get('id'))
